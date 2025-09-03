@@ -1,0 +1,20 @@
+<h3>Admin Login: </h3>
+<table class="centered">
+    <tr>
+        <td>Admin username: </td>
+        <td><input [(ngModel)]="admin_username" type="text"></td>
+    </tr>
+    <tr>
+        <td>Admin password: </td>
+        <td><input [(ngModel)]="admin_password" type="password"></td>
+    </tr>
+</table>
+<table class="centered">
+    <tr>
+        <td><button (click)="login()">Login</button></td>
+    </tr>
+    <tr>
+        <td><p style="color:red">{{ output }}</p></td>
+    </tr>
+</table>
+

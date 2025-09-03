@@ -1,0 +1,71 @@
+<h3>Register User</h3>
+
+<table border="0">
+    <tr>
+        <td>
+            Type:
+        </td>
+        <td>
+            <select [(ngModel)]="user_type">
+                <option value="">-- Select --</option>
+                <option value="tourist">Tourist</option>
+                <option value="owner">Owner</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td> Username:</td>
+        <td><input type="text" [(ngModel)]="user_username"></td>
+    </tr>
+    <tr>
+        <td>Password:</td>
+        <td><input type="password" [(ngModel)]="user_password"></td>
+    </tr>
+    <tr>
+        <td> First name:</td>
+        <td><input type="text" [(ngModel)]="user_firstname"></td>
+    </tr>
+    <tr>
+        <td>Last name:</td>
+        <td><input type="text" [(ngModel)]="user_lastname"></td>
+    </tr>
+    <tr>
+        <td>Gender:</td>
+        <td>
+            <select [(ngModel)]="gender">
+                <option value="">-- Select --</option>
+                <option value="M">Male</option>
+                <option value="Z">Female</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>Address:</td>
+        <td><input type="text" [(ngModel)]="address"></td>
+    </tr>
+    <tr>
+        <td>Contact number:</td>
+        <td><input type="text" [(ngModel)]="contact_number"></td>
+    </tr>
+    <tr>
+        <td>Email address:</td>
+        <td><input type="text" [(ngModel)]="email"></td>
+    </tr>
+    <tr>
+        <td>Profile picture: </td>
+        <td><input type="file" (change)="onFileSelected($event)" accept="image/png, image/jpeg, image/jpg"></td>
+    </tr>
+    <tr>
+        <td>Credit card number:</td>
+        <td><input type="text" [(ngModel)]="credit_card_number" (ngModelChange)="determineCreditCardType(credit_card_number)"></td>
+        <td *ngIf="credit_card_type != ''"><img [src]="'http://localhost:8080/credit-cards/get-picture/' + credit_card_type + '.png'" height="15"></td>
+    </tr>
+</table>
+<table class="centered">
+    <tr>
+        <td><button (click)="register()">Register</button></td>
+    </tr>
+    <tr>
+        <td><p style="color:red">{{ output }}</p></td>
+    </tr>
+</table>

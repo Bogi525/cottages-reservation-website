@@ -1,0 +1,68 @@
+<h1>Homepage</h1>
+<hr>
+<h3>Stats:</h3>
+<table border="1" class="full">
+    <tr>
+        <td>Cottage count:</td>
+        <td>Owners count:</td>
+        <td>Tourists count:</td>
+        <td>Reservations 1 day</td>
+        <td>Reservations 7 days</td>
+        <td>Reservations 30 days</td>
+    </tr>
+    <tr>
+        <td>{{ cottageCount }}</td>
+        <td>{{ ownerCount }}</td>
+        <td>{{ touristCount }}</td>
+        <td>{{ reservationCount1D }}</td>
+        <td>{{ reservationCount7D }}</td>
+        <td>{{ reservationCount30D }}</td>
+    </tr>
+</table>
+<hr>
+<h3>Cottage search:</h3>
+<table class="centered">
+    <tr>
+        <td>Search by name: </td>
+        <td><input type="text" [(ngModel)]="searchName"></td>
+    </tr>
+    <tr>
+        <td>Search by location: </td>
+        <td><input type="text" [(ngModel)]="searchLocation"></td>
+    </tr>
+</table>
+<table class="centered">
+    <tr>
+        <td><button (click)="searchCottage()">Search</button></td>
+    </tr>
+    <tr>
+        <td style="color:red">{{ searchFeedback }}</td>
+    </tr>
+</table>
+
+<table class="full" border="1">
+    <tr>
+        <td>ID:</td>
+        <td>Name:</td>
+        <td>Location:</td>
+        <td>Services:</td>
+        <td>Spring price:</td>
+        <td>Summer price:</td>
+        <td>Autumn price:</td>
+        <td>Winter price:</td>
+        <td>Phone:</td>
+    </tr>
+    <tr *ngFor="let a of searchedCottages">
+        <td>{{ a.id }}</td>
+        <td>{{ a.name }}</td>
+        <td>{{ a.location }}</td>
+        <td>{{ a.services }}</td>
+        <td [ngClass]="{'empty_box': a.spring_price == 0}">{{ a.spring_price }}</td>
+        <td>{{ a.summer_price }}</td>
+        <td [ngClass]="{'empty_box': a.autumn_price == 0}">{{ a.autumn_price }}</td>
+        <td>{{ a.winter_price }}</td>
+        <td>{{ a.phone }}</td>
+    </tr>
+</table>
+<hr>
+<p class="centered"><button (click)="login()">Log in</button> <button (click)="register()">Register</button></p>

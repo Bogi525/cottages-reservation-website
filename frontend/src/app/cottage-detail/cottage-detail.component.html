@@ -1,0 +1,57 @@
+<div *ngIf="!notSelected">
+<h1>Cottage details:</h1>
+<hr>
+<h3>Info:</h3>
+<table class="centered">
+    <tr>
+        <td><b>Name: </b></td>
+        <td>{{ cottage.name }}</td>
+    </tr>
+    <tr>
+        <td><b>Location: </b></td>
+        <td>{{ cottage.location }}</td>
+    </tr>
+    <tr>
+        <td><b>Services: </b></td>
+        <td>{{ cottage.services }}</td>
+    </tr>
+    <tr *ngIf="cottage.spring_price != 0">
+        <td><b>Spring price: </b></td>
+        <td>{{ cottage.spring_price }}</td>
+    </tr>
+    <tr>
+        <td><b>Summer price: </b></td>
+        <td>{{ cottage.summer_price }}</td>
+    </tr>
+    <tr *ngIf="cottage.autumn_price != 0">
+        <td><b>Autumn price: </b></td>
+        <td>{{ cottage.autumn_price }}</td>
+    </tr>
+    <tr>
+        <td><b>Winter price: </b></td>
+        <td>{{ cottage.winter_price }}</td>
+    </tr>
+    <tr>
+        <td><b>Phone: </b></td>
+        <td>{{ cottage.phone }}</td>
+    </tr>
+</table>
+<hr>
+<h3>Images: </h3>
+<div class="picture-gallery">
+  <img *ngFor="let a of pictureList" [src]="'http://localhost:8080/cottages/get-picture/' + cottage.id + '/' + a.image_name" alt="Cottage Image">
+</div>
+<hr>
+<table class="centered">
+    <tr>
+        <td><button (click)="goToReservationForm()">Reservation form</button></td>
+    </tr>
+</table>
+<hr>
+<table class="centered">
+    <tr>
+        <td><button (click)="back()">Back</button></td>
+        <td><app-logout></app-logout></td>
+    </tr>
+</table>
+</div>

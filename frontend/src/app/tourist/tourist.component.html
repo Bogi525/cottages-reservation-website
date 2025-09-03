@@ -1,0 +1,144 @@
+<h1>Tourist</h1>
+<hr>
+<h3>Profile:</h3>
+
+<table class="centered">
+    <tr>
+        <td><b>Profile picture:</b></td>
+        <td><img [src]="'http://localhost:8080/users/get-profile-picture/' + profile_picture_with_timestamp" width="100" height="100"/></td>
+        <td><button (click)="editPicture()">Edit</button></td>
+        <td *ngIf="isEditingPicture"><input type="file" (change)="onFileSelected($event)" accept="image/png, image/jpeg, image/jpg"></td>
+        <td *ngIf="isEditingPicture"><button (click)="updatePicture()">Confirm</button></td>
+        <td><p style="color:red">{{ pictureError }}</p></td>
+    </tr>
+    <tr>
+        <td><b>First name:</b></td>
+        <td><p>{{ user.user_firstname}}</p></td>
+        <td><button (click)="editFirstname()">Edit</button></td>
+        <td *ngIf="isEditingFirstname"><input type="text" [(ngModel)]="newFirstname"></td>
+        <td *ngIf="isEditingFirstname"><button (click)="updateFirstname()">Confirm</button></td>
+    </tr>
+    <tr>
+        <td><b>Last name:</b></td>
+        <td><p>{{ user.user_lastname }}</p></td>
+        <td><button (click)="editLastname()">Edit</button></td>
+        <td *ngIf="isEditingLastname"><input type="text" [(ngModel)]="newLastname"></td>
+        <td *ngIf="isEditingLastname"><button (click)="updateLastname()">Confirm</button></td>
+    </tr>
+    <tr>
+        <td><b>Address:</b></td>
+        <td><p>{{ user.address }}</p></td>
+        <td><button (click)="editAddress()">Edit</button></td>
+        <td *ngIf="isEditingAddress"><input type="text" [(ngModel)]="newAddress"></td>
+        <td *ngIf="isEditingAddress"><button (click)="updateAddress()">Confirm</button></td>
+    </tr>
+    <tr>
+        <td><b>Contact Number:</b></td>
+        <td><p>{{ user.contact_number }}</p></td>
+        <td><button (click)="editContactNumber()">Edit</button></td>
+        <td *ngIf="isEditingContactNumber"><input type="text" [(ngModel)]="newContactNumber"></td>
+        <td *ngIf="isEditingContactNumber"><button (click)="updateContactNumber()">Confirm</button></td>
+    </tr>
+    <tr>
+        <td><b>Email:</b></td>
+        <td><p>{{ user.email }}</p></td>
+        <td><button (click)="editEmail()">Edit</button></td>
+        <td *ngIf="isEditingEmail"><input type="text" [(ngModel)]="newEmail"></td>
+        <td *ngIf="isEditingEmail"><button (click)="updateEmail()">Confirm</button></td>
+    </tr>
+    <tr>
+        <td><b>Credit Card Number:</b></td>
+        <td><p>{{ user.credit_card_number }}</p></td>
+        <td><button (click)="editCreditCardNumber()">Edit</button></td>
+        <td *ngIf="isEditingCreditCardNumber"><input type="text" [(ngModel)]="newCreditCardNumber" (ngModelChange)="determineCreditCardType(this.newCreditCardNumber)"></td>
+        <td *ngIf="isEditingCreditCardNumber"><button (click)="updateCreditCardNumber()">Confirm</button></td>
+        <td *ngIf="credit_card_type != ''"><img [src]="'http://localhost:8080/credit-cards/get-picture/' + credit_card_type + '.png'" height="15"></td>
+        <td style="color:red"><p>{{ credit_card_feedback }}</p></td>
+    </tr>
+</table>
+<hr>
+<h3>Change password: </h3>
+<table class="centered">
+    <tr>
+        <td>Old password:</td>
+        <td><input type="password" [(ngModel)]="oldPassword"></td>
+    </tr>
+    <tr>
+        <td>New password: </td>
+        <td><input type="password" [(ngModel)]="newPassword"></td>
+    </tr>
+    <tr>
+        <td>Confirm new password: </td>
+        <td><input type="password" [(ngModel)]="newPassword2"></td>
+    </tr>
+</table>
+<table class="centered">
+    <tr style="text-align:center">
+        <button (click)="updatePassword()">Confirm</button>
+    </tr>
+    <tr>
+        <td style="color:red">{{ newPasswordFeedback }}</td>
+    </tr>
+</table>
+<hr>
+<h2>Cottages:</h2>
+<h3>Cottage search:</h3>
+<table class="centered">
+    <tr>
+        <td>Search by name: </td>
+        <td><input type="text" [(ngModel)]="searchName"></td>
+    </tr>
+    <tr>
+        <td>Search by location: </td>
+        <td><input type="text" [(ngModel)]="searchLocation"></td>
+    </tr>
+</table>
+<table class="centered">
+    <tr>
+        <td><button (click)="searchCottage()">Search</button></td>
+    </tr>
+</table>
+
+<table class="full" border="1">
+    <tr>
+        <td>ID:</td>
+        <td>Name:</td>
+        <td>Location:</td>
+        <td>Services:</td>
+        <td>Spring price:</td>
+        <td>Summer price:</td>
+        <td>Autumn price:</td>
+        <td>Winter price:</td>
+        <td>Phone:</td>
+    </tr>
+    <tr *ngFor="let a of searchedCottages">
+        <td>{{ a.id }}</td>
+        <td><a href="#" (click)="chooseCottage($event, a)">{{ a.name }}</a></td>
+        <td>{{ a.location }}</td>
+        <td>{{ a.services }}</td>
+        <td [ngClass]="{'empty_box': a.spring_price == 0}">{{ a.spring_price }}</td>
+        <td>{{ a.summer_price }}</td>
+        <td [ngClass]="{'empty_box': a.autumn_price == 0}">{{ a.autumn_price }}</td>
+        <td>{{ a.winter_price }}</td>
+        <td>{{ a.phone }}</td>
+    </tr>
+</table>
+<hr>
+<h2>Reservations:</h2>
+<h3>Requests:</h3>
+<table class="full" border="1">
+    <tr>
+        <td>Cottage name:</td>
+        <td>Cottage location:</td>
+        <td>Start date:</td>
+        <td>End date:</td>
+    </tr>
+    <tr *ngFor="let a of pendingReservations">
+        <td>{{ cottageNameMapped[a.cottage_id] }}</td>
+        <td>{{ cottageLocationMapped[a.cottage_id] }}</td>
+        <td>{{ a.start_date }}</td>
+        <td>{{ a.end_date }}</td>
+    </tr>
+</table>
+<hr>
+<p class="centered"><app-logout></app-logout></p>

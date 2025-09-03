@@ -1,0 +1,50 @@
+<h3>Edit user:</h3>
+<table class="centered">
+    <tr>
+        <td>First name:</td>
+        <td><input type="text" [(ngModel)]="selectedUser.user_firstname"></td>
+    </tr>
+    <tr>
+        <td>Last name:</td>
+        <td><input type="text" [(ngModel)]="selectedUser.user_lastname"></td>
+    </tr>
+    <tr>
+        <td>Gender:</td>
+        <td>
+            <select [(ngModel)]="selectedUser.gender">
+                <option value="">-- Select --</option>
+                <option value="M">Male</option>
+                <option value="Z">Female</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>Address:</td>
+        <td><input type="text" [(ngModel)]="selectedUser.address"></td>
+    </tr>
+    <tr>
+        <td>Contact number:</td>
+        <td><input type="text" [(ngModel)]="selectedUser.contact_number"></td>
+    </tr>
+    <tr>
+        <td>Email address:</td>
+        <td><input type="text" [(ngModel)]="selectedUser.email"></td>
+    </tr>
+    <tr>
+        <td>Credit card number:</td>
+        <td><input type="text" [(ngModel)]="selectedUser.credit_card_number" (ngModelChange)="determineCreditCardType(selectedUser.credit_card_number)"></td>
+        <td *ngIf="credit_card_type != ''"><img [src]="'http://localhost:8080/credit-cards/get-picture/' + credit_card_type + '.png'" height="15"></td>
+    </tr>
+</table>
+<table class="centered">
+    <tr>
+        <td><button (click)="edit()">Confirm</button></td>
+        <td><button (click)="back()">Back</button></td>
+    </tr>
+</table>
+<table class="centered">
+    <tr>
+        <td><div style="color:red">{{ output }}</div></td>
+    </tr>
+</table>
+

@@ -1,0 +1,125 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background-color: #f4f6f9;
+  color: darkslategrey;
+  line-height: 1.6;
+}
+
+header, footer {
+  background-color: lightsteelblue;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+h2 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 4px;
+  text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+.centered {
+    text-align: center;
+}
+
+textarea.big {
+    width:200px;
+    height:200px;
+    resize: none;
+}
+
+textarea {
+    width:200px;
+    height:80px;
+    resize: none;
+}
+
+button {
+  background-color: darkcyan;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+input[type="text"], input[type="password"], input[type="number"], input[type="file"] {
+  padding: 6px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  width: 200px;
+}
+
+input:focus {
+  outline: none;
+  border-color: slateblue;
+  box-shadow: 0 0 2px #4576a1;
+}
+
+table.full {
+  width:100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px lightsteelblue;
+}
+
+table.centered {
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+footer {
+  font-size: 1.2rem;
+  margin-top: 40px;
+}
+
+.picture-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 10px;
+  justify-content: center;
+  padding:20px;
+}
+
+.picture-gallery img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 20px;
+  transition: transform 0.2s;
+}
+
+.picture-gallery img:hover {
+  transform: scale(1.02);
+}
+
+

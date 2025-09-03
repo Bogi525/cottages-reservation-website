@@ -1,0 +1,90 @@
+<h1>Admin</h1>
+<hr>
+<h3>Tourists:</h3>
+<table border="1" class="full">
+    <tr>
+        <td>Username</td>
+        <td>First name</td>
+        <td>Last name</td>
+        <td>Gender</td>
+        <td>Address</td>
+        <td>Contact number</td>
+        <td>Email</td>
+        <td>Credit card number</td>
+        <td>Edit</td>
+        <td>Deactivate</td>
+    </tr>
+    <tr *ngFor="let a of tourists">
+        <td>{{ a.user_username }}</td>
+        <td>{{ a.user_firstname }}</td>
+        <td>{{ a.user_lastname }}</td>
+        <td>{{ a.gender }}</td>
+        <td>{{ a.address }}</td>
+        <td>{{ a.contact_number }}</td>
+        <td>{{ a.email }}</td>
+        <td>{{ a.credit_card_number }}</td>
+        <td><button (click)="editUser(a)">Edit</button></td>
+        <td><button (click)="deactivateUser(a)">Deactivate</button></td>
+    </tr>
+</table>
+<h3>Owners:</h3>
+<table border="1" class="full">
+    <tr>
+        <td>Username</td>
+        <td>First name</td>
+        <td>Last name</td>
+        <td>Gender</td>
+        <td>Address</td>
+        <td>Contact number</td>
+        <td>Email</td>
+        <td>Credit card number</td>
+        <td>Edit</td>
+        <td>Deactivate</td>
+    </tr>
+    <tr *ngFor="let a of owners">
+        <td>{{ a.user_username }}</td>
+        <td>{{ a.user_firstname }}</td>
+        <td>{{ a.user_lastname }}</td>
+        <td>{{ a.gender }}</td>
+        <td>{{ a.address }}</td>
+        <td>{{ a.contact_number }}</td>
+        <td>{{ a.email }}</td>
+        <td>{{ a.credit_card_number }}</td>
+        <td><button (click)="editUser(a)">Edit</button></td>
+        <td><button (click)="deactivateUser(a)">Deactivate</button></td>
+    </tr>
+</table>
+<hr>
+<h3>Account requests:</h3>
+<table border="1" class="full">
+    <tr>
+        <td>Username</td>
+        <td>First name</td>
+        <td>Last name</td>
+        <td>Gender</td>
+        <td>Address</td>
+        <td>Contact number</td>
+        <td>Email</td>
+        <td>Credit card number</td>
+        <td>Accept</td>
+        <td>Reject</td>
+    </tr>
+    <tr *ngFor="let a of awaiting_users">
+        <td>{{ a.user_username }}</td>
+        <td>{{ a.user_firstname }}</td>
+        <td>{{ a.user_lastname }}</td>
+        <td>{{ a.gender }}</td>
+        <td>{{ a.address }}</td>
+        <td>{{ a.contact_number }}</td>
+        <td>{{ a.email }}</td>
+        <td>{{ a.credit_card_number }}</td>
+        <td><button (click)="accept(a)">Accept</button></td>
+        <td><button (click)="reject(a)">Reject</button></td>
+    </tr>
+</table>
+<hr>
+<table class="centered">
+    <tr>
+        <td><button (click)="goToHomepage()">Homepage</button></td>
+    </tr>
+</table>
